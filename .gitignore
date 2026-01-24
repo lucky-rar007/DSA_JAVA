@@ -1,0 +1,9 @@
+# Ignore compiled Java files
+*.class
+
+# Ignore compiled folder
+compiled/
+
+# Ignore temporary files
+*.tmp
+.tmp.driveupload/
