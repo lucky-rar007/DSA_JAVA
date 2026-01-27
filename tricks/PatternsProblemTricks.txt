@@ -1,0 +1,10 @@
+Patterns need nested loops.
+Outer loop is for rows .
+inner loop is for colums.
+
+Outer loop is for lines(rows).
+
+For the inner loop , focus on the columns and somehow connect them to the outer loop .
+    PRINT IN THE OUTER LOOP ONLY .
+
+Observe symmetry in some patterns (optional , required in some only)
