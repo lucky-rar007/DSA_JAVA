@@ -8,3 +8,17 @@ For the inner loop , focus on the columns and somehow connect them to the outer 
     PRINT IN THE OUTER LOOP ONLY .
 
 Observe symmetry in some patterns (optional , required in some only)
+
+
+Outer loop → decides the ROW (line number)
+Inner loop → decides WHAT and HOW MUCH to print in that row
+Print newline → after inner loop finishes
+
+row=context and column=content
+
+for (int i = 0; i < n; i++) {          // rows
+    for (int j = 0; j < something; j++) {  // columns
+        System.out.print("x");
+    }
+    System.out.println();             // move to next row
+}
