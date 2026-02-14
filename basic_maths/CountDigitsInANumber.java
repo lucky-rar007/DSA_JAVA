@@ -1,3 +1,4 @@
+package basic_maths;
 import java.util.Scanner;
 
 public class CountDigitsInANumber {
