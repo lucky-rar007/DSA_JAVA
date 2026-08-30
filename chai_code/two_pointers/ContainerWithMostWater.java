@@ -35,7 +35,7 @@ Space Complexity: O(1)
 
 import java.util.*;
 
-public class Container_with_most_water {
+public class ContainerWithMostWater {
 
     public static int maxArea(int[] height) {
 

@@ -36,7 +36,7 @@ Time Complexity: O(n)
 Space Complexity: O(1)
 */
 
-public class Move_zeroes {
+public class MoveZeroes {
 
     public static void moveZeroes(int[] nums) {
 

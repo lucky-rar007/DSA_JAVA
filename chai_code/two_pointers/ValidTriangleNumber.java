@@ -60,7 +60,7 @@ Space Complexity: O(1) extra space
 
 import java.util.*;
 
-public class Valid_triangle_number {
+public class ValidTriangleNumber {
 
     public static int triangleNumber(int[] nums) {
 
