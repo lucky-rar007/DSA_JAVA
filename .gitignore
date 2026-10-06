@@ -3,7 +3,28 @@
 
 # Ignore compiled folder
 compiled/
+bin/
 
-# Ignore temporary files
+# Ignore Node & NPM
+node_modules/
+package.json
+package-lock.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore Prettier configuration and ignore files
+.prettierrc
+.prettierrc.*
+.prettierignore
+
+# Ignore IDE configuration
+.vscode/
+.idea/
+*.iml
+
+# Ignore temporary and system files
 *.tmp
 .tmp.driveupload/
+.DS_Store
+Thumbs.db
