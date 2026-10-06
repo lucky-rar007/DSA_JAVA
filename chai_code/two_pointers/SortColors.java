@@ -56,70 +56,59 @@ import java.util.Scanner;
 
 public class SortColors {
 
-    public static void swap(int[] arr, int i, int j) {
+  public static void swap(int[] arr, int i, int j) {
+    int temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+  }
 
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+  public static void sortColors(int[] nums) {
+    int low = 0;
+    int mid = 0;
+    int high = nums.length - 1;
+
+    while (mid <= high) {
+      if (nums[mid] == 0) {
+        swap(nums, low, mid);
+        low++;
+        mid++;
+      } else if (nums[mid] == 1) {
+        mid++;
+      } else {
+        swap(nums, mid, high);
+        high--;
+      }
+    }
+  }
+
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    System.out.print("Enter array size: ");
+    int n = sc.nextInt();
+
+    int[] nums = new int[n];
+
+    System.out.println("Enter " + n + " elements (only 0, 1, and 2):");
+
+    for (int i = 0; i < n; i++) {
+      nums[i] = sc.nextInt();
     }
 
-    public static void sortColors(int[] nums) {
+    sortColors(nums);
 
-        int low = 0;
-        int mid = 0;
-        int high = nums.length - 1;
+    System.out.print("Sorted array: [");
 
-        while (mid <= high) {
+    for (int i = 0; i < nums.length; i++) {
+      System.out.print(nums[i]);
 
-            if (nums[mid] == 0) {
-
-                swap(nums, low, mid);
-                low++;
-                mid++;
-
-            } else if (nums[mid] == 1) {
-
-                mid++;
-
-            } else {
-
-                swap(nums, mid, high);
-                high--;
-            }
-        }
+      if (i < nums.length - 1) {
+        System.out.print(", ");
+      }
     }
 
-    public static void main(String[] args) {
+    System.out.println("]");
 
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Enter array size: ");
-        int n = sc.nextInt();
-
-        int[] nums = new int[n];
-
-        System.out.println("Enter " + n + " elements (only 0, 1, and 2):");
-
-        for (int i = 0; i < n; i++) {
-            nums[i] = sc.nextInt();
-        }
-
-        sortColors(nums);
-
-        System.out.print("Sorted array: [");
-
-        for (int i = 0; i < nums.length; i++) {
-
-            System.out.print(nums[i]);
-
-            if (i < nums.length - 1) {
-                System.out.print(", ");
-            }
-        }
-
-        System.out.println("]");
-
-        sc.close();
-    }
+    sc.close();
+  }
 }
-

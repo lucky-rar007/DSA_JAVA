@@ -45,61 +45,55 @@ import java.util.Scanner;
 
 public class TrappingRainWater {
 
-    public static int trap(int[] height) {
+  public static int trap(int[] height) {
+    int left = 0;
+    int right = height.length - 1;
 
-        int left = 0;
-        int right = height.length - 1;
+    int leftMax = 0;
+    int rightMax = 0;
+    int total = 0;
 
-        int leftMax = 0;
-        int rightMax = 0;
-        int total = 0;
-
-        while (left < right) {
-
-            if (height[left] < height[right]) {
-
-                if (height[left] >= leftMax) {
-                    leftMax = height[left];
-                } else {
-                    total += leftMax - height[left];
-                }
-
-                left++;
-
-            } else {
-
-                if (height[right] >= rightMax) {
-                    rightMax = height[right];
-                } else {
-                    total += rightMax - height[right];
-                }
-
-                right--;
-            }
+    while (left < right) {
+      if (height[left] < height[right]) {
+        if (height[left] >= leftMax) {
+          leftMax = height[left];
+        } else {
+          total += leftMax - height[left];
         }
 
-        return total;
-    }
-
-    public static void main(String[] args) {
-
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Enter array size: ");
-        int n = sc.nextInt();
-
-        int[] height = new int[n];
-
-        System.out.println("Enter " + n + " heights:");
-
-        for (int i = 0; i < n; i++) {
-            height[i] = sc.nextInt();
+        left++;
+      } else {
+        if (height[right] >= rightMax) {
+          rightMax = height[right];
+        } else {
+          total += rightMax - height[right];
         }
 
-        int result = trap(height);
-
-        System.out.println("Trapped water: " + result);
-
-        sc.close();
+        right--;
+      }
     }
+
+    return total;
+  }
+
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    System.out.print("Enter array size: ");
+    int n = sc.nextInt();
+
+    int[] height = new int[n];
+
+    System.out.println("Enter " + n + " heights:");
+
+    for (int i = 0; i < n; i++) {
+      height[i] = sc.nextInt();
+    }
+
+    int result = trap(height);
+
+    System.out.println("Trapped water: " + result);
+
+    sc.close();
+  }
 }

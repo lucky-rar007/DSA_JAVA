@@ -1,4 +1,5 @@
 package chai_code.two_pointers;
+
 /*
 3Sum - LeetCode #15
 
@@ -28,76 +29,68 @@ import java.util.*;
 
 public class ThreeSum {
 
-    public static List<List<Integer>> threeSum(int[] nums) {
+  public static List<List<Integer>> threeSum(int[] nums) {
+    Arrays.sort(nums);
 
-        Arrays.sort(nums);
+    List<List<Integer>> result = new ArrayList<>();
 
-        List<List<Integer>> result = new ArrayList<>();
+    for (int i = 0; i <= nums.length - 3; i++) {
+      // Skip duplicate values for the first element.
+      if (i > 0 && nums[i] == nums[i - 1]) {
+        continue;
+      }
 
-        for (int i = 0; i <= nums.length - 3; i++) {
+      int left = i + 1;
+      int right = nums.length - 1;
 
-            // Skip duplicate values for the first element.
-            if (i > 0 && nums[i] == nums[i - 1]) {
-                continue;
-            }
+      while (left < right) {
+        int sum = nums[i] + nums[left] + nums[right];
 
-            int left = i + 1;
-            int right = nums.length - 1;
+        if (sum == 0) {
+          result.add(Arrays.asList(nums[i], nums[left], nums[right]));
 
-            while (left < right) {
+          left++;
+          right--;
 
-                int sum = nums[i] + nums[left] + nums[right];
+          // Skip duplicate values for left pointer.
+          while (left < right && nums[left] == nums[left - 1]) {
+            left++;
+          }
 
-                if (sum == 0) {
-
-                    result.add(
-                        Arrays.asList(nums[i], nums[left], nums[right])
-                    );
-
-                    left++;
-                    right--;
-
-                    // Skip duplicate values for left pointer.
-                    while (left < right && nums[left] == nums[left - 1]) {
-                        left++;
-                    }
-
-                    // Skip duplicate values for right pointer.
-                    while (left < right && nums[right] == nums[right + 1]) {
-                        right--;
-                    }
-
-                } else if (sum < 0) {
-                    left++;
-                } else {
-                    right--;
-                }
-            }
+          // Skip duplicate values for right pointer.
+          while (left < right && nums[right] == nums[right + 1]) {
+            right--;
+          }
+        } else if (sum < 0) {
+          left++;
+        } else {
+          right--;
         }
-
-        return result;
+      }
     }
 
-    public static void main(String[] args) {
+    return result;
+  }
 
-        Scanner sc = new Scanner(System.in);
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter array size: ");
-        int n = sc.nextInt();
+    System.out.print("Enter array size: ");
+    int n = sc.nextInt();
 
-        int[] nums = new int[n];
+    int[] nums = new int[n];
 
-        System.out.println("Enter " + n + " elements:");
+    System.out.println("Enter " + n + " elements:");
 
-        for (int i = 0; i < n; i++) {
-            nums[i] = sc.nextInt();
-        }
-
-        List<List<Integer>> result = threeSum(nums);
-
-        System.out.println("Triplets that sum to 0:");
-        System.out.println(result);
-
-        sc.close();
+    for (int i = 0; i < n; i++) {
+      nums[i] = sc.nextInt();
     }
+
+    List<List<Integer>> result = threeSum(nums);
+
+    System.out.println("Triplets that sum to 0:");
+    System.out.println(result);
+
+    sc.close();
+  }
 }

@@ -31,54 +31,47 @@ import java.util.Scanner;
 
 public class TwoSumII {
 
-    public static int[] twoSum(int[] numbers, int target) {
+  public static int[] twoSum(int[] numbers, int target) {
+    int left = 0;
+    int right = numbers.length - 1;
 
-        int left = 0;
-        int right = numbers.length - 1;
+    while (left < right) {
+      int sum = numbers[left] + numbers[right];
 
-        while (left < right) {
-
-            int sum = numbers[left] + numbers[right];
-
-            if (sum == target) {
-                return new int[]{left + 1, right + 1};
-
-            } else if (sum < target) {
-                left++;
-
-            } else {
-                right--;
-            }
-        }
-
-        // The problem guarantees exactly one solution.
-        return new int[]{};
+      if (sum == target) {
+        return new int[] { left + 1, right + 1 };
+      } else if (sum < target) {
+        left++;
+      } else {
+        right--;
+      }
     }
 
-    public static void main(String[] args) {
+    // The problem guarantees exactly one solution.
+    return new int[] {};
+  }
 
-        Scanner sc = new Scanner(System.in);
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter array size: ");
-        int n = sc.nextInt();
+    System.out.print("Enter array size: ");
+    int n = sc.nextInt();
 
-        int[] numbers = new int[n];
+    int[] numbers = new int[n];
 
-        System.out.println("Enter " + n + " elements in sorted order:");
+    System.out.println("Enter " + n + " elements in sorted order:");
 
-        for (int i = 0; i < n; i++) {
-            numbers[i] = sc.nextInt();
-        }
-
-        System.out.print("Enter target: ");
-        int target = sc.nextInt();
-
-        int[] result = twoSum(numbers, target);
-
-        System.out.println(
-            "Indices: [" + result[0] + ", " + result[1] + "]"
-        );
-
-        sc.close();
+    for (int i = 0; i < n; i++) {
+      numbers[i] = sc.nextInt();
     }
+
+    System.out.print("Enter target: ");
+    int target = sc.nextInt();
+
+    int[] result = twoSum(numbers, target);
+
+    System.out.println("Indices: [" + result[0] + ", " + result[1] + "]");
+
+    sc.close();
+  }
 }

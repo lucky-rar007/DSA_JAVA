@@ -41,50 +41,45 @@ import java.util.Scanner;
 
 public class ValidPalindrome {
 
-    public static boolean isPalindrome(String s) {
+  public static boolean isPalindrome(String s) {
+    int left = 0;
+    int right = s.length() - 1;
 
-        int left = 0;
-        int right = s.length() - 1;
+    while (left < right) {
+      // Skip non-alphanumeric characters from the left.
+      if (!Character.isLetterOrDigit(s.charAt(left))) {
+        left++;
+        continue;
+      }
 
-        while (left < right) {
+      // Skip non-alphanumeric characters from the right.
+      if (!Character.isLetterOrDigit(s.charAt(right))) {
+        right--;
+        continue;
+      }
 
-            // Skip non-alphanumeric characters from the left.
-            if (!Character.isLetterOrDigit(s.charAt(left))) {
-                left++;
-                continue;
-            }
+      // Compare characters ignoring case.
+      if (Character.toLowerCase(s.charAt(left)) != Character.toLowerCase(s.charAt(right))) {
+        return false;
+      }
 
-            // Skip non-alphanumeric characters from the right.
-            if (!Character.isLetterOrDigit(s.charAt(right))) {
-                right--;
-                continue;
-            }
-
-            // Compare characters ignoring case.
-            if (Character.toLowerCase(s.charAt(left)) !=
-                Character.toLowerCase(s.charAt(right))) {
-
-                return false;
-            }
-
-            left++;
-            right--;
-        }
-
-        return true;
+      left++;
+      right--;
     }
 
-    public static void main(String[] args) {
+    return true;
+  }
 
-        Scanner sc = new Scanner(System.in);
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter a string: ");
-        String s = sc.nextLine();
+    System.out.print("Enter a string: ");
+    String s = sc.nextLine();
 
-        boolean result = isPalindrome(s);
+    boolean result = isPalindrome(s);
 
-        System.out.println("Is palindrome: " + result);
+    System.out.println("Is palindrome: " + result);
 
-        sc.close();
-    }
+    sc.close();
+  }
 }

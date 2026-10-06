@@ -1,0 +1,7 @@
+node_modules/
+target/
+compiled/
+build/
+out/
+bin/
+.gradle/

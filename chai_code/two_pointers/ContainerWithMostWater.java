@@ -1,6 +1,5 @@
 package chai_code.two_pointers;
 
-
 /*
 Container With Most Water - LeetCode #11
 
@@ -37,49 +36,45 @@ import java.util.*;
 
 public class ContainerWithMostWater {
 
-    public static int maxArea(int[] height) {
+  public static int maxArea(int[] height) {
+    int left = 0;
+    int right = height.length - 1;
+    int max = 0;
 
-        int left = 0;
-        int right = height.length - 1;
-        int max = 0;
+    while (left < right) {
+      int area = (right - left) * Math.min(height[left], height[right]);
 
-        while (left < right) {
+      max = Math.max(max, area);
 
-            int area = (right - left)
-                    * Math.min(height[left], height[right]);
-
-            max = Math.max(max, area);
-
-            // Move the pointer pointing to the shorter line.
-            if (height[left] <= height[right]) {
-                left++;
-            } else {
-                right--;
-            }
-        }
-
-        return max;
+      // Move the pointer pointing to the shorter line.
+      if (height[left] <= height[right]) {
+        left++;
+      } else {
+        right--;
+      }
     }
 
-    public static void main(String[] args) {
+    return max;
+  }
 
-        Scanner sc = new Scanner(System.in);
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter array size: ");
-        int n = sc.nextInt();
+    System.out.print("Enter array size: ");
+    int n = sc.nextInt();
 
-        int[] height = new int[n];
+    int[] height = new int[n];
 
-        System.out.println("Enter " + n + " heights:");
+    System.out.println("Enter " + n + " heights:");
 
-        for (int i = 0; i < n; i++) {
-            height[i] = sc.nextInt();
-        }
-
-        int result = maxArea(height);
-
-        System.out.println("Maximum water area: " + result);
-
-        sc.close();
+    for (int i = 0; i < n; i++) {
+      height[i] = sc.nextInt();
     }
+
+    int result = maxArea(height);
+
+    System.out.println("Maximum water area: " + result);
+
+    sc.close();
+  }
 }

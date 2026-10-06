@@ -1,6 +1,5 @@
 package chai_code.ArraysAndHashing;
 
-
 /*
 Contains Duplicate - LeetCode #217
 
@@ -41,41 +40,38 @@ import java.util.*;
 
 public class ContainsDuplicate {
 
-    public static boolean containsDuplicate(int[] nums) {
+  public static boolean containsDuplicate(int[] nums) {
+    HashSet<Integer> seen = new HashSet<>();
 
-        HashSet<Integer> seen = new HashSet<>();
+    for (int x = 0; x < nums.length; x++) {
+      if (seen.contains(nums[x])) {
+        return true;
+      }
 
-        for (int x = 0; x < nums.length; x++) {
-
-            if (seen.contains(nums[x])) {
-                return true;
-            }
-
-            seen.add(nums[x]);
-        }
-
-        return false;
+      seen.add(nums[x]);
     }
 
-    public static void main(String[] args) {
+    return false;
+  }
 
-        Scanner sc = new Scanner(System.in);
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter array size: ");
-        int n = sc.nextInt();
+    System.out.print("Enter array size: ");
+    int n = sc.nextInt();
 
-        int[] nums = new int[n];
+    int[] nums = new int[n];
 
-        System.out.println("Enter " + n + " numbers:");
+    System.out.println("Enter " + n + " numbers:");
 
-        for (int i = 0; i < n; i++) {
-            nums[i] = sc.nextInt();
-        }
-
-        boolean result = containsDuplicate(nums);
-
-        System.out.println("Contains duplicate: " + result);
-
-        sc.close();
+    for (int i = 0; i < n; i++) {
+      nums[i] = sc.nextInt();
     }
+
+    boolean result = containsDuplicate(nums);
+
+    System.out.println("Contains duplicate: " + result);
+
+    sc.close();
+  }
 }

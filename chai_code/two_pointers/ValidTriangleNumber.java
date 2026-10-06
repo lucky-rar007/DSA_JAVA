@@ -62,53 +62,46 @@ import java.util.*;
 
 public class ValidTriangleNumber {
 
-    public static int triangleNumber(int[] nums) {
+  public static int triangleNumber(int[] nums) {
+    Arrays.sort(nums);
 
-        Arrays.sort(nums);
+    int count = 0;
 
-        int count = 0;
+    for (int k = nums.length - 1; k >= 2; k--) {
+      int left = 0;
+      int right = k - 1;
 
-        for (int k = nums.length - 1; k >= 2; k--) {
-
-            int left = 0;
-            int right = k - 1;
-
-            while (left < right) {
-
-                if (nums[left] + nums[right] > nums[k]) {
-
-                    count += right - left;
-                    right--;
-
-                } else {
-
-                    left++;
-                }
-            }
+      while (left < right) {
+        if (nums[left] + nums[right] > nums[k]) {
+          count += right - left;
+          right--;
+        } else {
+          left++;
         }
-
-        return count;
+      }
     }
 
-    public static void main(String[] args) {
+    return count;
+  }
 
-        Scanner sc = new Scanner(System.in);
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter array size: ");
-        int n = sc.nextInt();
+    System.out.print("Enter array size: ");
+    int n = sc.nextInt();
 
-        int[] nums = new int[n];
+    int[] nums = new int[n];
 
-        System.out.println("Enter " + n + " side lengths:");
+    System.out.println("Enter " + n + " side lengths:");
 
-        for (int i = 0; i < n; i++) {
-            nums[i] = sc.nextInt();
-        }
-
-        int result = triangleNumber(nums);
-
-        System.out.println("Number of valid triangles: " + result);
-
-        sc.close();
+    for (int i = 0; i < n; i++) {
+      nums[i] = sc.nextInt();
     }
+
+    int result = triangleNumber(nums);
+
+    System.out.println("Number of valid triangles: " + result);
+
+    sc.close();
+  }
 }

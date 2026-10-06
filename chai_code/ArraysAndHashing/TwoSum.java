@@ -1,6 +1,5 @@
 package chai_code.ArraysAndHashing;
 
-
 /*
 Two Sum - LeetCode #1
 
@@ -53,52 +52,47 @@ import java.util.*;
 
 public class TwoSum {
 
-    public static int[] twoSum(int[] nums, int target) {
+  public static int[] twoSum(int[] nums, int target) {
+    // number → index
+    HashMap<Integer, Integer> seen = new HashMap<>();
 
-        // number → index
-        HashMap<Integer, Integer> seen = new HashMap<>();
+    for (int i = 0; i < nums.length; i++) {
+      int need = target - nums[i];
 
-        for (int i = 0; i < nums.length; i++) {
+      // Check if the number we need was seen before.
+      if (seen.containsKey(need)) {
+        return new int[] { seen.get(need), i };
+      }
 
-            int need = target - nums[i];
-
-            // Check if the number we need was seen before.
-            if (seen.containsKey(need)) {
-                return new int[]{seen.get(need), i};
-            }
-
-            // Store current number → current index.
-            seen.put(nums[i], i);
-        }
-
-        // Problem guarantees exactly one solution.
-        return new int[]{};
+      // Store current number → current index.
+      seen.put(nums[i], i);
     }
 
-    public static void main(String[] args) {
+    // Problem guarantees exactly one solution.
+    return new int[] {};
+  }
 
-        Scanner sc = new Scanner(System.in);
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter array size: ");
-        int n = sc.nextInt();
+    System.out.print("Enter array size: ");
+    int n = sc.nextInt();
 
-        int[] nums = new int[n];
+    int[] nums = new int[n];
 
-        System.out.println("Enter " + n + " numbers:");
+    System.out.println("Enter " + n + " numbers:");
 
-        for (int i = 0; i < n; i++) {
-            nums[i] = sc.nextInt();
-        }
-
-        System.out.print("Enter target: ");
-        int target = sc.nextInt();
-
-        int[] result = twoSum(nums, target);
-
-        System.out.println(
-                "Indices: " + result[0] + " " + result[1]
-        );
-
-        sc.close();
+    for (int i = 0; i < n; i++) {
+      nums[i] = sc.nextInt();
     }
+
+    System.out.print("Enter target: ");
+    int target = sc.nextInt();
+
+    int[] result = twoSum(nums, target);
+
+    System.out.println("Indices: " + result[0] + " " + result[1]);
+
+    sc.close();
+  }
 }

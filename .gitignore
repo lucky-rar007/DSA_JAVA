@@ -1,9 +1,28 @@
-# Ignore compiled Java files
+# Java build output
 *.class
-
-# Ignore compiled folder
+*.jar
+*.war
+*.ear
+target/
 compiled/
+build/
+out/
+bin/
+.gradle/
 
-# Ignore temporary files
+# Node dependencies and generated output
+node_modules/
+dist/
+coverage/
+
+# IDE files
+.idea/
+*.iml
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Temporary files
 *.tmp
 .tmp.driveupload/
